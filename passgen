@@ -1,0 +1,115 @@
+#!/bin/bash
+
+# passgen - password generator using /dev/urandom and head | tr
+#
+# Usage:
+#   passgen                # Generate 1 password of 16 characters
+#   passgen <count> <length> # Generate <count> passwords of <length> characters
+#
+# Features:
+# - Generates cryptographically secure passwords using /dev/urandom.
+# - Characters: 0-9, a-z, A-Z, !@#$%^&*()_+-=[]{}|;:,.<>?
+# - Validates input parameters (max 10 passwords, max length 256).
+# - Uses minimal tools: head, tr
+# - Install: sudo install -m 755 passgen /usr/local/bin/passgen
+#
+# Dependencies:
+# - Standard Linux utilities: head, tr
+# - /dev/urandom (available on all modern Linux systems)
+#
+# 
+
+# Character set for passwords
+CHARSET="0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()_+-=[]{}|;:,.<>?"
+
+# Default values
+DEFAULT_COUNT=1
+DEFAULT_LENGTH=16
+MAX_COUNT=10
+MAX_LENGTH=256
+
+# Function to display usage
+usage() {
+    echo "Usage: $0 [<count> <length>]"
+    echo "  count: Number of passwords to generate (default: $DEFAULT_COUNT, max: $MAX_COUNT)"
+    echo "  length: Length of each password (default: $DEFAULT_LENGTH, max: $MAX_LENGTH)"
+    echo "Example:"
+    echo "  $0              # Generate 1 password of 16 characters"
+    echo "  $0 10 8        # Generate 10 passwords of 8 characters"
+    exit 1
+}
+
+# Function to validate if input is a positive integer
+is_positive_integer() {
+    local input="$1"
+    if [[ ! "$input" =~ ^[0-9]+$ ]] || [ "$input" -le 0 ]; then
+        echo "Error: '$input' is not a positive integer." >&2
+        exit 1
+    fi
+}
+
+# Function to generate a single password
+generate_password() {
+    local length="$1"
+    local password=""
+    local bytes_needed=$((length * 4)) # Overestimate to account for tr filtering
+
+    # Check if /dev/urandom is available
+    if [ ! -r /dev/urandom ]; then
+        echo "Error: /dev/urandom is not accessible." >&2
+        exit 1
+    fi
+
+    # Read and filter until we have enough characters
+    while [ ${#password} -lt "$length" ]; do
+        local chunk
+        chunk=$(head -c "$bytes_needed" /dev/urandom 2>/dev/null | tr -dc "$CHARSET")
+        if [ $? -ne 0 ]; then
+            echo "Error: Failed to read from /dev/urandom." >&2
+            exit 1
+        fi
+        password="$password$chunk"
+    done
+
+    # Trim to exact length
+    password="${password:0:$length}"
+    echo "$password"
+}
+
+# Main script
+
+# Check dependencies
+if ! command -v head >/dev/null 2>&1 || ! command -v tr >/dev/null 2>&1; then
+    echo "Error: Required utilities (head, tr) are not installed." >&2
+    exit 1
+fi
+
+# Parse arguments
+count="$DEFAULT_COUNT"
+length="$DEFAULT_LENGTH"
+
+if [ $# -eq 0 ]; then
+    : # Use defaults
+elif [ $# -eq 2 ]; then
+    count="$1"
+    length="$2"
+    is_positive_integer "$count"
+    is_positive_integer "$length"
+    if [ "$count" -gt "$MAX_COUNT" ]; then
+        echo "Error: Count exceeds maximum ($MAX_COUNT)." >&2
+        exit 1
+    fi
+    if [ "$length" -gt "$MAX_LENGTH" ]; then
+        echo "Error: Length exceeds maximum ($MAX_LENGTH)." >&2
+        exit 1
+    fi
+else
+    usage
+fi
+
+# Generate passwords
+for ((i = 0; i < count; i++)); do
+    generate_password "$length"
+done
+
+exit 0
