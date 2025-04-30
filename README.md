@@ -1,6 +1,6 @@
 # cryptomator
 
-![Version](https://img.shields.io/badge/version-2.6-green) | ![Python](https://img.shields.io/badge/python-3.6%2B-green) | ![Last Commit](https://img.shields.io/github/last-commit/cyberanchor/cryptomator) | ![Issues](https://img.shields.io/github/issues/cyberanchor/cryptomator)
+![Version](https://img.shields.io/badge/version-2.6-green)   ![Python](https://img.shields.io/badge/python-3.6%2B-green)   ![Last Commit](https://img.shields.io/github/last-commit/cyberanchor/cryptomator)   ![Issues](https://img.shields.io/github/issues/cyberanchor/cryptomator)
 
 **cryptomator** - cross-platform command-line tool for single file encryption and decryption, utilizing AES-256-GCM, HMAC-SHA512, and Argon2id for key derivation.
 Optimized for large files (>4 GB), it supports streaming I/O, memory-mapped files, and detailed system block analysis, ensuring robust security and performance.
@@ -12,7 +12,7 @@ Optimized for large files (>4 GB), it supports streaming I/O, memory-mapped file
 - **System Block Analysis**: Provides detailed inspection of encrypted file metadata, including signature, salt, nonce, and HMAC.
 - **Flexible Password Input**: Supports passwords via command-line, file, or interactive prompt (UTF-8, up to 4096 characters recommended).
 - **Unicode Support**: Handles filenames up to 255 bytes in UTF-8 encoding.
-- **Logging**: Detailed, colorized console output with rotating file logs (10 MB max, 3 backups).
+- **Logging**: Detailed, colorized console output.
 - **Security**: Validates inputs, enforces minimum file size (4 bytes), and ensures compatibility checks for older file formats.
 
 ## Cryptographic Architecture
@@ -34,7 +34,7 @@ Optimized for large files (>4 GB), it supports streaming I/O, memory-mapped file
 ## Installation
 1. Clone the repository:
    ```bash
-   git clone https://github.com/cyberanchor/cryptomator.git
+   git clone https://github.com/cyberanchor/cryptomator
    cd cryptomator
    ```
 2. Install dependencies:
@@ -147,7 +147,7 @@ Encrypted files follow this structure:
 - Introduced verbose output with `--verbose`.
 
 ## Contributing
-Submit issues or pull requests to the [GitHub repository](https://github.com/cyberanchor/cryptomator).
+Submit issues or pull requests.
 
 ## Disclaimer
-**cryptomator is intended exclusively for personal, lawful use.** The tool is provided for secure file encryption and decryption by individual users. The author and contributors are not responsible for any misuse of this software, including but not limited to its use in malicious, illegal, or harmful activities. By using cryptomator, you agree to use it responsibly and in compliance with all applicable laws and regulations.
+**cryptomator is intended exclusively for personal, lawful use.** The tool is provided for secure file encryption and decryption by individual users. The author and contributors are not responsible for any misuse of this software, including but not limited to its use in malicious, illegal, or harmful activities.
