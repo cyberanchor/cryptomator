@@ -69,7 +69,7 @@ Optimized for large files (>4 GB), it supports streaming I/O, memory-mapped file
    ```
    **Output**:
    ```
-   cryptomator v2.6
+   cryptomotor v2.6
    Processing encrypt in ./data (5 files), output: ./data/encrypted
    Encrypted ./data/file1.txt to ./data/encrypted/abc123... in 0.45s
    ...
@@ -150,4 +150,4 @@ Encrypted files follow this structure:
 Submit issues or pull requests.
 
 ## Disclaimer
-**cryptomator is intended exclusively for personal, lawful use.** The tool is provided for secure file encryption and decryption by individual users. The author and contributors are not responsible for any misuse of this software, including but not limited to its use in malicious, illegal, or harmful activities.
+**cryptomotor is intended exclusively for personal, lawful use.** The tool is provided for secure file encryption and decryption by individual users. The author and contributors are not responsible for any misuse of this software, including but not limited to its use in malicious, illegal, or harmful activities.
