@@ -34,8 +34,8 @@ Optimized for large files (>4 GB), it supports streaming I/O, memory-mapped file
 ## Installation
 1. Clone the repository:
    ```bash
-   git clone https://github.com/cyberanchor/cryptomator
-   cd cryptomator
+   git clone https://github.com/cyberanchor/cryptomotor
+   cd cryptomotor
    ```
 2. Install dependencies:
    ```bash
