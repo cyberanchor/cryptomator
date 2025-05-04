@@ -2,6 +2,9 @@
 
 ![Version](https://img.shields.io/badge/version-2.6-green)   ![Python](https://img.shields.io/badge/python-3.6%2B-green)   ![Last Commit](https://img.shields.io/github/last-commit/cyberanchor/cryptomator)   ![Issues](https://img.shields.io/github/issues/cyberanchor/cryptomator)
 
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white&style=flat-square) ![CSS3](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white&style=flat-square) ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black&style=flat-square) ![Bootstrap](https://img.shields.io/badge/Bootstrap-563D7C?logo=bootstrap&logoColor=white&style=flat-square) ![Chart.js](https://img.shields.io/badge/Chart.js-FF6384?logo=chart.js&logoColor=white&style=flat-square)
+
+
 **cryptomator** - cross-platform command-line tool for single file encryption and decryption, utilizing AES-256-GCM, HMAC-SHA512, and Argon2id for key derivation.
 Optimized for large files (>4 GB), it supports streaming I/O, memory-mapped files, and detailed system block analysis, ensuring robust security and performance.
 
