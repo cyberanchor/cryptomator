@@ -1,8 +1,8 @@
-# cryptomator
+# cryptomotor
 
 ![Version](https://img.shields.io/badge/version-2.6-green)   ![Python](https://img.shields.io/badge/python-3.6%2B-green)   ![Last Commit](https://img.shields.io/github/last-commit/cyberanchor/cryptomator)   ![Issues](https://img.shields.io/github/issues/cyberanchor/cryptomator)
 
-**cryptomator** - cross-platform command-line tool for single file encryption and decryption, utilizing AES-256-GCM, HMAC-SHA512, and Argon2id for key derivation.
+**cryptomotor** - cross-platform command-line tool for single file encryption and decryption, utilizing AES-256-GCM, HMAC-SHA512, and Argon2id for key derivation.
 Optimized for large files (>4 GB), it supports streaming I/O, memory-mapped files, and detailed system block analysis, ensuring robust security and performance.
 
 ## Features
